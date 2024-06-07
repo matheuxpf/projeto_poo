@@ -1,18 +1,18 @@
 import javax.swing.JOptionPane;
-public class Mesa {
+import java.util.ArrayList;
+
+public abstract class Mesa {
     protected int numeroDaMesa;
-    protected int numeroDeCadeiras;
     protected String localDaMesa;
     protected String status;
+    protected ArrayList<Pedido> pedidos;
 
-    Mesa(){
+    Mesa() {
+        this.pedidos = new ArrayList<>();
     }
+
     public int getNumeroDaMesa() {
         return numeroDaMesa;
-    }
-
-    public int getNumeroDeCadeiras() {
-        return numeroDeCadeiras;
     }
 
     public String getLocalDaMesa() {
@@ -22,12 +22,9 @@ public class Mesa {
     public String getStatus() {
         return status;
     }
+
     public void setNumeroDaMesa(int numeroDaMesa) {
         this.numeroDaMesa = numeroDaMesa;
-    }
-
-    public void setNumeroDeCadeiras(int numeroDeCadeiras) {
-        this.numeroDeCadeiras = numeroDeCadeiras;
     }
 
     public void setLocalDaMesa(String localDaMesa) {
@@ -37,8 +34,17 @@ public class Mesa {
     public void setStatus(String status) {
         this.status = status;
     }
-    public String toString(){
-        return "Dados da mesa\nNúmero: " + this.numeroDaMesa + "\nCadeiras: " + this.numeroDeCadeiras + "\nLocal: " + this.localDaMesa + "\nStatus: " + this.status;
+
+    public void adicionarPedido(Pedido pedido) {
+        this.pedidos.add(pedido);
     }
 
+    public void calcularContaEmitirFatura() {
+        Conta conta = new Conta(pedidos);
+        conta.emitirConta();
+    }
+
+    public String toString() {
+        return "Dados da mesa\nNúmero: " + this.numeroDaMesa + "\nLocal: " + this.localDaMesa + "\nStatus: " + this.status;
+    }
 }

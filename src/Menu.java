@@ -1,9 +1,13 @@
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
 public class Menu {
-    protected ArrayList <ItemDoMenu> itensDoMenu = new ArrayList<ItemDoMenu>();
+    private ArrayList <ItemDoMenu> itensDoMenu = new ArrayList<ItemDoMenu>();
 
     Menu(){
+    }
+
+    public ArrayList<ItemDoMenu> getItensDoMenu() {
+        return itensDoMenu;
     }
     public void printMenu(){
         StringBuilder itensMenu = new StringBuilder();
@@ -15,7 +19,7 @@ public class Menu {
     }
     public void adicionaItem(ItemDoMenu itemDoMenu){
         itensDoMenu.add(itemDoMenu);
-        JOptionPane.showMessageDialog(null, "'" + itemDoMenu.getNome() + "' adicionado ao Menu.");
+        JOptionPane.showMessageDialog(null, "" + itemDoMenu.getNome() + " adicionado ao Menu.");
     }
 
 
