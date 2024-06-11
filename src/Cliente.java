@@ -4,11 +4,13 @@ public class Cliente extends Pessoa {
     private static int codigo = 1;
     private int codigoDeAtendimento;
     private char status;
+    private Mesa mesa;
 
-    Cliente(String nome, String telefone) {
+    Cliente(String nome, String telefone, Mesa mesa) {
         this.codigoDeAtendimento = codigo++;
         this.nome = nome;
         this.telefone = telefone;
+        this.mesa = mesa;
         this.entradaCliente();
         JOptionPane.showMessageDialog(null, "Cliente " + this.nome + " está sem mesa.\nAtendimento cód. " + this.codigoDeAtendimento);
     }
@@ -19,6 +21,12 @@ public class Cliente extends Pessoa {
 
     public char getStatus() {
         return this.status;
+    }
+    public Mesa getMesa(){
+        return this.mesa;
+    }
+    public void setMesa(Mesa mesa){
+        this.mesa = mesa;
     }
 
     public void setCodigoDeAtendimento(int codigoDeAtendimento) {
